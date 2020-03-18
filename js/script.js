@@ -8,14 +8,14 @@ const removeElement = (elementName) => {
 
 //Hide all students except for ones corresponding to the ones on the page number
 const showPage = (studentsInList, page) => {
-   var startIndex = (page * studentsPerPage) - studentsPerPage;
-   var endIndex = page * studentsPerPage;
+   let startIndex = (page * studentsPerPage) - studentsPerPage;
+   let endIndex = page * studentsPerPage;
 
-   for (let i = 0; i < startIndex.length; i += 1) {
+   for (let i = 0; i < studentsInList.length; i += 1) {
       if (i >= startIndex && i < endIndex ) {
          studentsInList[i].style.display = '';
       } else {
-         studentsInList[i].style.display = none;
+         studentsInList[i].style.display = 'none';
       }
    }
 }
@@ -43,7 +43,7 @@ const appendPageLinks = (studentsInList) => {
        a.href = '#';
        a.textContent = i;
 
-       // sets up a click event and calls a showPage() function whenever the click event is delievered to the target.
+       // sets up a click event and calls a showPage() function whenever the click event occurs.
        a.addEventListener('click', (e) => {
            for (let i = 1; i <= totalPageNumber; i++) {
                a.className = '';
