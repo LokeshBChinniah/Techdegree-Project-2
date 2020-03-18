@@ -1,10 +1,7 @@
 //Global Variables
 const studentsInList = document.querySelectorAll('.student-item.cf');
 const studentsPerPage = 10;
-const removeElement = (elementName) => {
-   const element = document.querySelector(elementName);
-   if (element) element.remove();
-}
+
 
 //Hide all students except for ones corresponding to the ones on the page number
 const showPage = (studentsInList, page) => {
@@ -25,9 +22,6 @@ const showPage = (studentsInList, page) => {
 const appendPageLinks = (studentsInList) => {
    const divPage = document.querySelector('.page');
    const totalPageNumber = Math.ceil(studentsInList.length / 10);
-
-   removeElement('.pagination');
-
    
    const divLink = document.createElement('div');
    const ulLink = document.createElement('ul');
@@ -61,7 +55,3 @@ const appendPageLinks = (studentsInList) => {
 showPage(studentsInList, 1);
 appendPageLinks(studentsInList);
 
-
-
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
