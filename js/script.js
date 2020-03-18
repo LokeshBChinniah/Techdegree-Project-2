@@ -32,8 +32,9 @@ const appendPageLinks = (studentsInList) => {
        const li = document.createElement('li');
        const a = document.createElement('a');
 
-       if (i === 1) a.className = 'Active';
-
+       if (i === 1) {
+          a.className = 'Active';
+       }
        a.href = '#';
        a.textContent = i;
 
