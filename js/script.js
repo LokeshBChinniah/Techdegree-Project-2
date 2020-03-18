@@ -1,9 +1,13 @@
 //Global Variables
-const studentsInList = document.getElementsByClassName('student-item');
+const studentsInList = document.querySelectorAll('.student-item.cf');
 const studentsPerPage = 10;
+const removeElement = (elementName) => {
+   const element = document.querySelector(elementName);
+   if (element) element.remove();
+}
 
 //Hide all students except for ones corresponding to the ones on the page number
-const hideStudents = (studentsInList, page) => {
+const showPage = (studentsInList, page) => {
    var startIndex = (page * studentsPerPage) - studentsPerPage;
    var endIndex = page * studentsPerPage;
 
@@ -17,14 +21,45 @@ const hideStudents = (studentsInList, page) => {
 }
 
 
-/*** 
-   Create the `appendPageLinks function` to generate, append, and add 
-   functionality to the pagination buttons.
-***/
+// create and append functioning pagination links
 const appendPageLinks = (studentsInList) => {
-   const numOfPages = Math.ceil(studentsInList.length / studentsPerPage);
+   const divPage = document.querySelector('.page');
+   const totalPageNumber = Math.ceil(studentsInList.length / 10);
 
+   removeElement('.pagination');
+
+   
+   const divLink = document.createElement('div');
+   const ulLink = document.createElement('ul');
+   divLink.className = 'pagination';
+
+   // create pagination links
+   for (let i = 1; i <= totalPageNumber; i++) {
+       const li = document.createElement('li');
+       const a = document.createElement('a');
+
+       if (i === 1) a.className = 'Active';
+
+       a.href = '#';
+       a.textContent = i;
+
+       // sets up a click event and calls a showPage() function whenever the click event is delievered to the target.
+       a.addEventListener('click', (e) => {
+           for (let i = 1; i <= totalPageNumber; i++) {
+               a.className = '';
+           }
+           e.target.className = 'Active';
+           showPage(studentsInList, e.target.textContent);
+       });
+       li.append(a);
+       ulLink.append(li);
+   }
+   divLink.append(ulLink);
+   divPage.append(divLink);
 }
+
+showPage(studentsInList, 1);
+appendPageLinks(studentsInList);
 
 
 
