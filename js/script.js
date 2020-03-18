@@ -57,7 +57,7 @@ const appendPageLinks = (studentsInList) => {
    divLink.append(ulLink);
    divPage.append(divLink);
 }
-
+//calling functions to append links and show the first 10 students
 showPage(studentsInList, 1);
 appendPageLinks(studentsInList);
 
