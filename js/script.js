@@ -28,7 +28,7 @@ const appendPageLinks = (studentsInList) => {
    divLink.className = 'pagination';
 
    // create pagination links
-   for (let i = 1; i <= totalPageNumber; i++) {
+   for (let i = 1; i <= totalPageNumber; i += 1) {
        const li = document.createElement('li');
        const a = document.createElement('a');
 
@@ -39,7 +39,7 @@ const appendPageLinks = (studentsInList) => {
 
        // sets up a click event and calls a showPage() function whenever the click event occurs.
        a.addEventListener('click', (e) => {
-           for (let i = 1; i <= totalPageNumber; i++) {
+           for (let i = 1; i <= totalPageNumber; i += 1) {
                a.className = '';
            }
            e.target.className = 'Active';
